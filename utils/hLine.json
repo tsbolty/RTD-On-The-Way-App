@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Florida Station",
+    "coordinates": [
+      -104.828405528469,
+      39.6900133473622
+    ]
+  },
+  {
+    "name": "Iliff Station",
+    "coordinates": [
+      -104.826822731973,
+      39.6733388819277
+    ]
+  },
+  {
+    "name": "Nine Mile Station",
+    "coordinates": [
+      -104.845103082391,
+      39.6575623270546
+    ]
+  },
+  {
+    "name": "Dayton Station",
+    "coordinates": [
+      -104.877680771833,
+      39.6431236472378
+    ]
+  },
+  {
+    "name": "Southmoor Station",
+    "coordinates": [
+      -104.916088478063,
+      39.6482164651713
+    ]
+  },
+  {
+    "name": "Yale Station",
+    "coordinates": [
+      -104.927180908429,
+      39.6686340120539
+    ]
+  },
+  {
+    "name": "Colorado Station",
+    "coordinates": [
+      -104.937681418193,
+      39.6796455420039
+    ]
+  },
+  {
+    "name": "University of Denver Station",
+    "coordinates": [
+      -104.964702651209,
+      39.6852372690164
+    ]
+  },
+  {
+    "name": "Louisiana / Pearl Station",
+    "coordinates": [
+      -104.978220914626,
+      39.692837919654
+    ]
+  },
+  {
+    "name": "I-25 / Broadway Station",
+    "coordinates": [
+      -104.990179885068,
+      39.7019690331874
+    ]
+  },
+  {
+    "name": "Alameda Station",
+    "coordinates": [
+      -104.993171351321,
+      39.708681239077
+    ]
+  },
+  {
+    "name": "10th / Osage Station",
+    "coordinates": [
+      -105.005705010881,
+      39.7321464203231
+    ]
+  },
+  {
+    "name": "Colfax at Auraria Station",
+    "coordinates": [
+      -105.001977096775,
+      39.7403508319996
+    ]
+  },
+  {
+    "name": "Theatre District / Convention Center",
+    "coordinates": [
+      -104.99647871194,
+      39.7438804086879
+    ]
+  },
+  {
+    "name": "16th St / California Station",
+    "coordinates": [
+      -104.99233129358,
+      39.7449724445913
+    ]
+  },
+  {
+    "name": "18th St / California Station",
+    "coordinates": [
+      -104.990288311723,
+      39.7465977851544
+    ]
+  }
+]

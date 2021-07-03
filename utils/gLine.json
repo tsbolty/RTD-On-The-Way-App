@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Wheat Ridge / Ward Road Station",
+    "coordinates": [
+      -105.133020944497,
+      39.7880431486683
+    ]
+  },
+  {
+    "name": "Arvada Ridge Station",
+    "coordinates": [
+      -105.111279208322,
+      39.7926465885373
+    ]
+  },
+  {
+    "name": "Olde Town Arvada",
+    "coordinates": [
+      -105.08026773517,
+      39.799032968141
+    ]
+  },
+  {
+    "name": "60th/Sheridan-Arvada Gold Strike Station",
+    "coordinates": [
+      -105.04917108017,
+      39.8036715617485
+    ]
+  },
+  {
+    "name": "Clear Creek / Federal Boulevard Station",
+    "coordinates": [
+      -105.023336124588,
+      39.803927896782
+    ]
+  },
+  {
+    "name": "Pecos Junction Station",
+    "coordinates": [
+      -105.005087875468,
+      39.8050717752358
+    ]
+  },
+  {
+    "name": "41st / Fox St Station",
+    "coordinates": [
+      -104.996880807743,
+      39.7735424103745
+    ]
+  },
+  {
+    "name": "Union Station Transit Center",
+    "coordinates": [
+      -105.003481093953,
+      39.7549076009976
+    ]
+  }
+]

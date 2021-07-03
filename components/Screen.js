@@ -1,0 +1,98 @@
+import React, { useState, useEffect } from "react";
+import RouteMap from "./RouteMap";
+import Search from "./Search";
+import { BottomNavigation } from "react-native-paper";
+
+const Screen = ({ userLocation }) => {
+	const [index, setIndex] = React.useState(0);
+	const [routes] = React.useState([
+		{ key: "map", title: "Map", icon: "map" },
+		{ key: "search", title: "Search", icon: "magnify" }
+	]);
+	console.log(userLocation);
+	const [state, setState] = useState({
+		center: userLocation || {
+			lat: 39.724888799404596,
+			lng: -104.99608392483549,
+			latitudeDelta: 0.04,
+			longitudeDelta: 0.05
+		},
+		stops: [],
+		markers: [],
+		origin: "",
+		destination: "",
+		lineChosen: "",
+		keywordSearch: "",
+		distanceSearch: ""
+	});
+
+	useEffect(() => {
+		setState({ ...state, origin: "", destination: "" });
+	}, [state.lineChosen]);
+
+	const handleSearch = async () => {
+		const chosenStops = routing.getStops(
+			state.lineChosen,
+			state.origin,
+			state.destination
+		);
+		let results = [];
+		const allData = await chosenStops.map(async (stop) => {
+			return routing
+				.searchPlaces(
+					state.keywordSearch,
+					state.distanceSearch,
+					stop.coordinates[1],
+					stop.coordinates[0]
+				)
+				.then((res) => {
+					const results = res.data.results.filter(
+						(item) => Object.entries(item).length
+					);
+					return results.map((item) => ({
+						...item,
+						closestStation: stop.name
+					}));
+				})
+				.catch((err) => console.log(err));
+		});
+		Promise.all(allData).then((values) => {
+			if (!values) {
+				return;
+			}
+			values.forEach((value) => {
+				if (!value.length) {
+					return;
+				}
+				console.log(value);
+				const objects =
+					value.map((obj) => ({
+						name: obj.name,
+						placeId: obj.place_id,
+						coordinates: [obj.geometry.location.lng, obj.geometry.location.lat],
+						address: obj.vicinity,
+
+						type: "result"
+					})) || [];
+
+				results.push(...objects);
+			});
+			setState({ ...state, markers: results, stops: chosenStops });
+		});
+	};
+
+	const renderScene = BottomNavigation.SceneMap({
+		map: () => <RouteMap region={state.center} />,
+		search: () => <Search />
+	});
+
+	return (
+		<BottomNavigation
+			navigationState={{ index, routes }}
+			onIndexChange={setIndex}
+			renderScene={renderScene}
+		/>
+	);
+};
+
+export default Screen;

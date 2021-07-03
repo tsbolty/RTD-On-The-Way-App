@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Jefferson Co Government - Golden Station",
+    "coordinates": [
+      -105.20134815787,
+      39.7264575307701
+    ]
+  },
+  {
+    "name": "Red Rocks College Station",
+    "coordinates": [
+      -105.152115386853,
+      39.7250658022084
+    ]
+  },
+  {
+    "name": "Federal Center Station",
+    "coordinates": [
+      -105.128962398264,
+      39.7200029061743
+    ]
+  },
+  {
+    "name": "Oak Station",
+    "coordinates": [
+      -105.119734993497,
+      39.7372960010017
+    ]
+  },
+  {
+    "name": "Garrison Station",
+    "coordinates": [
+      -105.099483486022,
+      39.7365789002108
+    ]
+  },
+  {
+    "name": "Lakewood-Wadsworth Station",
+    "coordinates": [
+      -105.08153871655,
+      39.7366687030589
+    ]
+  },
+  {
+    "name": "Lamar Station",
+    "coordinates": [
+      -105.067018086888,
+      39.7367613912411
+    ]
+  },
+  {
+    "name": "Sheridan Station",
+    "coordinates": [
+      -105.052922444796,
+      39.7351506876857
+    ]
+  },
+  {
+    "name": "Perry Station",
+    "coordinates": [
+      -105.039897270232,
+      39.7348333897644
+    ]
+  },
+  {
+    "name": "Knox Station",
+    "coordinates": [
+      -105.032806800321,
+      39.7356756718157
+    ]
+  },
+  {
+    "name": "Decatur-Federal Station",
+    "coordinates": [
+      -105.024071006678,
+      39.7373296583408
+    ]
+  },
+  {
+    "name": "Auraria West Campus Station",
+    "coordinates": [
+      -105.010774352252,
+      39.7416844877144
+    ]
+  },
+  {
+    "name": "Empower Field at Mile High",
+    "coordinates": [
+      -105.013276259133,
+      39.7434448293374
+    ]
+  },
+  {
+    "name": "Pepsi Center / Elitch Gardens Station",
+    "coordinates": [
+      -105.009742885083,
+      39.7486080203246
+    ]
+  },
+  {
+    "name": "Union Station Transit Center",
+    "coordinates": [
+      -105.003481093953,
+      39.7549076009976
+    ]
+  }
+]

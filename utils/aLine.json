@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Union Station Transit Center",
+    "coordinates": [
+      -105.003481093953,
+      39.7549076009976
+    ]
+  },
+  {
+    "name": "38th / Blake Station",
+    "coordinates": [
+      -104.973788967476,
+      39.7704929950472
+    ]
+  },
+  {
+    "name": "40th / Colorado Station",
+    "coordinates": [
+      -104.942714723646,
+      39.7760104930383
+    ]
+  },
+  {
+    "name": "Central Park Station",
+    "coordinates": [
+      -104.89164109171,
+      39.7705966974486
+    ]
+  },
+  {
+    "name": "Peoria Station",
+    "coordinates": [
+      -104.850493361269,
+      39.7674541223319
+    ]
+  },
+  {
+    "name": "40th / Airport - Gateway Park Station",
+    "coordinates": [
+      -104.787512613244,
+      39.769941878451
+    ]
+  },
+  {
+    "name": "61st / Pena Station",
+    "coordinates": [
+      -104.783889171408,
+      39.8068067380141
+    ]
+  },
+  {
+    "name": "Denver Airport Station",
+    "coordinates": [
+      -104.673926030068,
+      39.8462594884503
+    ]
+  }
+]

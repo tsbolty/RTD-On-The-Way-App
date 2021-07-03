@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Alameda Station",
+    "coordinates": [
+      -104.993171351321,
+      39.708681239077
+    ]
+  },
+  {
+    "name": "18th St / California Station",
+    "coordinates": [
+      -104.990288311723,
+      39.7465977851544
+    ]
+  },
+  {
+    "name": "18th St / Stout Station",
+    "coordinates": [
+      -104.990497781779,
+      39.7479433205841
+    ]
+  },
+  {
+    "name": "Arapahoe at Village Center Station",
+    "coordinates": [
+      -104.888566410919,
+      39.6003103344811
+    ]
+  },
+  {
+    "name": "Dry Creek Station",
+    "coordinates": [
+      -104.876794802096,
+      39.5790609193795
+    ]
+  },
+  {
+    "name": "County Line Station",
+    "coordinates": [
+      -104.872285896276,
+      39.5618182939798
+    ]
+  },
+  {
+    "name": "Lincoln Station",
+    "coordinates": [
+      -104.869648049139,
+      39.5457927505658
+    ]
+  },
+  {
+    "name": "I-25 / Broadway Station",
+    "coordinates": [
+      -104.990179885068,
+      39.7019690331874
+    ]
+  },
+  {
+    "name": "Belleview Station",
+    "coordinates": [
+      -104.904571186788,
+      39.6276868008032
+    ]
+  },
+  {
+    "name": "Colorado Station",
+    "coordinates": [
+      -104.937681418193,
+      39.6796455420039
+    ]
+  },
+  {
+    "name": "16th St / California Station",
+    "coordinates": [
+      -104.99233129358,
+      39.7449724445913
+    ]
+  },
+  {
+    "name": "Colfax at Auraria Station",
+    "coordinates": [
+      -105.001977096775,
+      39.7403508319996
+    ]
+  },
+  {
+    "name": "10th / Osage Station",
+    "coordinates": [
+      -105.005705010881,
+      39.7321464203231
+    ]
+  },
+  {
+    "name": "16th St / Stout Station",
+    "coordinates": [
+      -104.992909396296,
+      39.7460637351877
+    ]
+  },
+  {
+    "name": "University of Denver Station",
+    "coordinates": [
+      -104.964702651209,
+      39.6852372690164
+    ]
+  },
+  {
+    "name": "Yale Station",
+    "coordinates": [
+      -104.927180908429,
+      39.6686340120539
+    ]
+  },
+  {
+    "name": "Theatre District / Convention Center",
+    "coordinates": [
+      -104.99647871194,
+      39.7438804086879
+    ]
+  },
+  {
+    "name": "Louisiana / Pearl Station",
+    "coordinates": [
+      -104.978220914626,
+      39.692837919654
+    ]
+  },
+  {
+    "name": "Southmoor Station",
+    "coordinates": [
+      -104.916088478063,
+      39.6482164651713
+    ]
+  },
+  {
+    "name": "Orchard Station",
+    "coordinates": [
+      -104.896077977798,
+      39.6133775561876
+    ]
+  },
+  {
+    "name": "Sky Ridge Station",
+    "coordinates": [
+      -104.870453302553,
+      39.5322884266398
+    ]
+  },
+  {
+    "name": "Lone Tree City Center Station",
+    "coordinates": [
+      -104.863321193034,
+      39.5276572074082
+    ]
+  },
+  {
+    "name": "RidgeGate Parkway Station",
+    "coordinates": [
+      -104.865403911867,
+      39.5204705608878
+    ]
+  }
+]

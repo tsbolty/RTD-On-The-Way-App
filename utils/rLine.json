@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Lincoln Station",
+    "coordinates": [
+      -104.869648049139,
+      39.5457927505658
+    ]
+  },
+  {
+    "name": "County Line Station",
+    "coordinates": [
+      -104.872285896276,
+      39.5618182939798
+    ]
+  },
+  {
+    "name": "Dry Creek Station",
+    "coordinates": [
+      -104.876794802096,
+      39.5790609193795
+    ]
+  },
+  {
+    "name": "Arapahoe at Village Center Station",
+    "coordinates": [
+      -104.888566410919,
+      39.6003103344811
+    ]
+  },
+  {
+    "name": "Orchard Station",
+    "coordinates": [
+      -104.896077977798,
+      39.6133775561876
+    ]
+  },
+  {
+    "name": "Belleview Station",
+    "coordinates": [
+      -104.904571186788,
+      39.6276868008032
+    ]
+  },
+  {
+    "name": "Dayton Station",
+    "coordinates": [
+      -104.877680771833,
+      39.6431236472378
+    ]
+  },
+  {
+    "name": "Nine Mile Station",
+    "coordinates": [
+      -104.845103082391,
+      39.6575623270546
+    ]
+  },
+  {
+    "name": "Iliff Station",
+    "coordinates": [
+      -104.826822731973,
+      39.6733388819277
+    ]
+  },
+  {
+    "name": "Florida Station",
+    "coordinates": [
+      -104.828405528469,
+      39.6900133473622
+    ]
+  },
+  {
+    "name": "Aurora City Center Station",
+    "coordinates": [
+      -104.819152994231,
+      39.7087423917121
+    ]
+  },
+  {
+    "name": "2nd Ave /  Abilene Station",
+    "coordinates": [
+      -104.825551510743,
+      39.7195192448818
+    ]
+  },
+  {
+    "name": "13th Avenue Station",
+    "coordinates": [
+      -104.823528631386,
+      39.7349403795612
+    ]
+  },
+  {
+    "name": "Colfax Station",
+    "coordinates": [
+      -104.827024147735,
+      39.7404582753487
+    ]
+  },
+  {
+    "name": "Fitzsimons Parkway Station",
+    "coordinates": [
+      -104.83937572777,
+      39.7549808397943
+    ]
+  },
+  {
+    "name": "Peoria Station",
+    "coordinates": [
+      -104.850493361269,
+      39.7674541223319
+    ]
+  }
+]

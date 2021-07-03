@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Littleton / Mineral Station",
+    "coordinates": [
+      -105.025031567126,
+      39.5800932828196
+    ]
+  },
+  {
+    "name": "Littleton / Downtown Station",
+    "coordinates": [
+      -105.014877056969,
+      39.6119748578426
+    ]
+  },
+  {
+    "name": "Oxford-City of Sheridan Station",
+    "coordinates": [
+      -105.004822071162,
+      39.6428971915813
+    ]
+  },
+  {
+    "name": "Englewood Station",
+    "coordinates": [
+      -105.000012348298,
+      39.655453730296
+    ]
+  },
+  {
+    "name": "Evans Station",
+    "coordinates": [
+      -104.992850697681,
+      39.6776724230828
+    ]
+  },
+  {
+    "name": "I-25 / Broadway Station",
+    "coordinates": [
+      -104.990179885068,
+      39.7019690331874
+    ]
+  },
+  {
+    "name": "Alameda Station",
+    "coordinates": [
+      -104.993171351321,
+      39.708681239077
+    ]
+  },
+  {
+    "name": "10th / Osage Station",
+    "coordinates": [
+      -105.005705010881,
+      39.7321464203231
+    ]
+  },
+  {
+    "name": "Colfax at Auraria Station",
+    "coordinates": [
+      -105.001977096775,
+      39.7403508319996
+    ]
+  },
+  {
+    "name": "Theatre District / Convention Center",
+    "coordinates": [
+      -104.99647871194,
+      39.7438804086879
+    ]
+  },
+  {
+    "name": "16th St / California Station",
+    "coordinates": [
+      -104.99233129358,
+      39.7449724445913
+    ]
+  },
+  {
+    "name": "18th St / California Station",
+    "coordinates": [
+      -104.990288311723,
+      39.7465977851544
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Union Station Transit Center",
+    "coordinates": [
+      -105.003481093953,
+      39.7549076009976
+    ]
+  },
+  {
+    "name": "48th / Brighton-National Western Center",
+    "coordinates": [
+      -104.968244363422,
+      39.7848399226152
+    ]
+  },
+  {
+    "name": "Commerce City / 72nd Ave",
+    "coordinates": [
+      -104.942979589212,
+      39.8263491132226
+    ]
+  },
+  {
+    "name": "Original Thornton / 88th Ave",
+    "coordinates": [
+      -104.95307155866,
+      39.8587786445947
+    ]
+  },
+  {
+    "name": "Thornton Crossroads / 104th Ave",
+    "coordinates": [
+      -104.9422377874,
+      39.8821847743462
+    ]
+  },
+  {
+    "name": "Northglenn / 112th Ave",
+    "coordinates": [
+      -104.960076382293,
+      39.9027359665163
+    ]
+  },
+  {
+    "name": "Eastlake / 124th Ave",
+    "coordinates": [
+      -104.962120975728,
+      39.9229035398943
+    ]
+  }
+]

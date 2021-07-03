@@ -1,0 +1,44 @@
+[
+  {
+    "name": "16th St / California Station",
+    "coordinates": [
+      -104.99233129358,
+      39.7449724445913
+    ]
+  },
+  {
+    "name": "18th St / California Station",
+    "coordinates": [
+      -104.990288311723,
+      39.7465977851544
+    ]
+  },
+  {
+    "name": "20th St / Welton Station",
+    "coordinates": [
+      -104.98674059068,
+      39.7480642576877
+    ]
+  },
+  {
+    "name": "25th St / Welton Station",
+    "coordinates": [
+      -104.980068794082,
+      39.7531633055278
+    ]
+  },
+  {
+    "name": "27th St / Welton Station",
+    "coordinates": [
+      -104.97734235599,
+      39.7552429218789
+    ]
+  },
+  {
+    "name": "30th / Downing Station",
+    "coordinates": [
+      -104.973570339096,
+      39.7586567715299
+    ]
+  }
+]

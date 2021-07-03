@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Westminster Station",
+    "coordinates": [
+      -105.028973835429,
+      39.8226906094732
+    ]
+  },
+  {
+    "name": "Pecos Junction Station",
+    "coordinates": [
+      -105.005087875468,
+      39.8050717752358
+    ]
+  },
+  {
+    "name": "41st / Fox St Station",
+    "coordinates": [
+      -104.996880807743,
+      39.7735424103745
+    ]
+  },
+  {
+    "name": "Union Station Transit Center",
+    "coordinates": [
+      -105.003481093953,
+      39.7549076009976
+    ]
+  }
+]
