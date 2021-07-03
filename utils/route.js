@@ -1,6 +1,7 @@
 import axios from "axios";
-const getStops = (line, origin, destination) => {
-	const allLineStops = require(`./${line.toLowerCase()}Line.json`);
+import lines from "./index";
+const getStops = async (line, origin, destination) => {
+	const allLineStops = lines[`${line}Line`];
 	const start = allLineStops.map((e) => e.name).indexOf(origin);
 	const end = allLineStops.map((e) => e.name).indexOf(destination);
 	const indexes = start > end ? [end, start] : [start, end];
@@ -8,7 +9,7 @@ const getStops = (line, origin, destination) => {
 };
 
 const getLine = (line) => {
-	return require(`./${line}Line.json`);
+	return lines[`${line}Line`];
 };
 
 const searchPlaces = (name, distance, lat, lon) =>
