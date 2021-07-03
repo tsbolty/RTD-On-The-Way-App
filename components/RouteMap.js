@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MapView from "react-native-maps";
 import { StyleSheet, Dimensions } from "react-native";
 import { Marker } from "react-native-maps";
 
-export default function RouteMap({ region }) {
+export default function RouteMap({ region, markers }) {
 	// const onRegionChange = (newRegion) => {
 	// 	setRegion({ ...region, newRegion });
 	// };
 	return (
 		<MapView region={region} style={styles.map}>
-			<Marker
-				key={Math.floor(Math.random() * 10000)}
-				coordinate={{
-					latitude: 39.724888799404596,
-					longitude: -104.99608392483549
-				}}
-				title='title'
-			/>
+			{markers.map((mark) => (
+				<Marker
+					key={Math.floor(Math.random() * 10000)}
+					coordinate={{
+						latitude: mark.coordinates[1],
+						longitude: mark.coordinates[0]
+					}}
+					title={mark.name}
+					pinColor={mark.type === "result" ? "blue" : "red"}
+				/>
+			))}
 		</MapView>
 	);
 }
