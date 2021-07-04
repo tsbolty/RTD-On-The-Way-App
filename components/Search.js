@@ -14,6 +14,7 @@ function Search({ state, setSearchValues, handleSearch }) {
 		businessType: false,
 		distanceSearch: false
 	});
+	const [buttonDisabled, setButtonDisabled] = useState(true);
 
 	const handlePress = async (key, value, lineChange) => {
 		setExpanded({ ...expanded, [key]: !expanded[key] });
@@ -28,6 +29,32 @@ function Search({ state, setSearchValues, handleSearch }) {
 					[key]: value
 			  });
 	};
+
+	const handleResetSearch = (e) => {
+		setSearchValues({
+			...state,
+			lineChosen: "",
+			stops: [],
+			origin: "",
+			destination: "",
+			keywordSearch: "",
+			distanceSearch: "",
+			markers: []
+		});
+	};
+
+	useEffect(() => {
+		if (
+			state.stops &&
+			state.lineChosen &&
+			state.origin &&
+			state.destination &&
+			state.keywordSearch &&
+			state.distanceSearch
+		) {
+			setButtonDisabled(false);
+		}
+	}, [state]);
 
 	return (
 		<>
@@ -130,14 +157,20 @@ function Search({ state, setSearchValues, handleSearch }) {
 					</>
 				) : null}
 			</List.Section>
-			{/* {state.stops &&
-				state.origin &&
-				state.destination &&
-				state.distanceSearch && ( */}
-			<Button icon='camera' mode='contained' onPress={handleSearch}>
-				Press me
+
+			<Button
+				icon='camera'
+				mode='contained'
+				disabled={buttonDisabled}
+				onPress={() => {
+					setButtonDisabled(false);
+					handleSearch();
+				}}>
+				Search
 			</Button>
-			{/* )} */}
+			<Button icon='camera' mode='contained' onPress={handleResetSearch}>
+				Reset Search Values
+			</Button>
 		</>
 	);
 }
