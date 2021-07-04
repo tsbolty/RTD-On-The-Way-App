@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { List } from "react-native-paper";
 import routing from "../utils/route";
 import allLines from "../utils/allLines.json";
 import destinationTypes from "../utils/destinationTypes.json";
 import distances from "../utils/distances";
-import { Button } from "react-native-paper";
-import { SafeAreaView, View, ScrollView, StyleSheet } from "react-native";
+import { Button, List } from "react-native-paper";
+import { View, ScrollView, StyleSheet } from "react-native";
 
 function Search({ state, setSearchValues, handleSearch }) {
 	const [expanded, setExpanded] = useState({
@@ -56,8 +55,6 @@ function Search({ state, setSearchValues, handleSearch }) {
 			setButtonDisabled(false);
 		}
 	}, [state]);
-
-	const icon = () => <List.Icon icon='train' />;
 
 	return (
 		<View
@@ -162,6 +159,10 @@ function Search({ state, setSearchValues, handleSearch }) {
 										))}
 									</ScrollView>
 								</List.Accordion>
+							</>
+						) : null}
+						{state.keywordSearch ? (
+							<>
 								<List.Accordion
 									title='How may blocks away?'
 									id='5'
@@ -196,18 +197,18 @@ function Search({ state, setSearchValues, handleSearch }) {
 
 			<View style={{ bottom: 0 }}>
 				<Button
-					icon='camera'
+					icon='map-search'
 					mode='contained'
 					disabled={buttonDisabled}
 					style={styles.myButton}
 					onPress={() => {
-						setButtonDisabled(false);
+						setButtonDisabled(true);
 						handleSearch();
 					}}>
 					Search
 				</Button>
 				<Button
-					icon='camera'
+					icon='nuke'
 					mode='contained'
 					onPress={handleResetSearch}
 					style={styles.myButton}>
