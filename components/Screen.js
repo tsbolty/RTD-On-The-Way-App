@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RouteMap from "./RouteMap";
 import Search from "./Search";
+import Results from "./Results";
 import { BottomNavigation } from "react-native-paper";
 import routing from "../utils/route";
 
@@ -8,7 +9,8 @@ const Screen = ({ userLocation }) => {
 	const [index, setIndex] = React.useState(0);
 	const [routes] = React.useState([
 		{ key: "map", title: "Map", icon: "map" },
-		{ key: "search", title: "Search", icon: "magnify" }
+		{ key: "search", title: "Search", icon: "magnify" },
+		{ key: "results", title: "Results", icon: "view-list" }
 	]);
 	const [state, setState] = useState({
 		center: {
@@ -99,12 +101,6 @@ const Screen = ({ userLocation }) => {
 
 					results.push(...objects);
 				});
-				console.log(
-					"new center: ",
-					newCenter,
-					typeof parseFloat((state.stops.length / zoomLevel).toFixed(2)),
-					typeof parseFloat((state.stops.length / zoomLevel).toFixed(2))
-				);
 				setState({
 					...state,
 					markers: results,
@@ -139,6 +135,15 @@ const Screen = ({ userLocation }) => {
 				setSearchValues={setState}
 				state={state}
 				handleSearch={handleSearch}
+			/>
+		),
+		results: () => (
+			<Results
+				searchResults={[...state.markers]}
+				keyword={state.keywordSearch}
+				origin={state.origin}
+				destination={state.destination}
+				distance={state.distanceSearch}
 			/>
 		)
 	});
