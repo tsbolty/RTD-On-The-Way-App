@@ -86,9 +86,6 @@ const Screen = ({ userLocation }) => {
 			console.log(err);
 		}
 	};
-	useEffect(() => {
-		handleSearch();
-	}, []);
 
 	const renderScene = BottomNavigation.SceneMap({
 		map: () => (
@@ -97,7 +94,7 @@ const Screen = ({ userLocation }) => {
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
-		search: () => <Search />
+		search: () => <Search setSearchValues={setState} state={state} />
 	});
 
 	return (
