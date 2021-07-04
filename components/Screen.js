@@ -32,12 +32,6 @@ const Screen = ({ userLocation }) => {
 	}, [state.lineChosen]);
 
 	const midpoint = ([x1, y1], [x2, y2]) => [(x1 + x2) / 2, (y1 + y2) / 2];
-	console.log(
-		midpoint(
-			[39.5800932828196, -105.025031567126],
-			[39.7465977851544, -104.990288311723]
-		)
-	);
 
 	const handleSearch = async () => {
 		const chosenStops = await routing.getStops(
@@ -56,13 +50,13 @@ const Screen = ({ userLocation }) => {
 		let zoomLevel = 100;
 		switch (state.lineChosen) {
 			case "a":
-				zoomLevel = 110;
+				zoomLevel = 40;
 				break;
 			case "e" || "r" || "h":
-				zoomLevel = 50;
+				zoomLevel = 110;
 				break;
 			default:
-				zoomLevel = 80;
+				zoomLevel = 75;
 		}
 
 		try {
@@ -118,8 +112,12 @@ const Screen = ({ userLocation }) => {
 					center: {
 						latitude: newCenter[0],
 						longitude: newCenter[1],
-						latitudeDelta: parseFloat((state.stops.length / 80).toFixed(2)),
-						longitudeDelta: parseFloat((state.stops.length / 80).toFixed(2))
+						latitudeDelta: parseFloat(
+							(state.stops.length / zoomLevel).toFixed(2)
+						),
+						longitudeDelta: parseFloat(
+							(state.stops.length / zoomLevel).toFixed(2)
+						)
 					}
 				});
 				setIndex(0);
