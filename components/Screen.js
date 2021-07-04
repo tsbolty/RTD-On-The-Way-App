@@ -47,7 +47,6 @@ const Screen = ({ userLocation }) => {
 						stop.coordinates[0]
 					)
 					.then((res) => {
-						console.log(res);
 						const results = res.data.results.filter(
 							(item) => Object.entries(item).length
 						);
@@ -59,7 +58,6 @@ const Screen = ({ userLocation }) => {
 					.catch((err) => console.log(err));
 			});
 			Promise.all(allData).then((values) => {
-				// console.log(values);
 				if (!values) {
 					return;
 				}
