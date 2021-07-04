@@ -32,24 +32,22 @@ const Screen = ({ userLocation }) => {
 
 	const handleSearch = async () => {
 		const chosenStops = await routing.getStops(
-			// state.lineChosen,
-			// state.origin,
-			// state.destination
-			"e",
-			"Southmoor Station",
-			"Louisiana / Pearl Station"
+			state.lineChosen,
+			state.origin,
+			state.destination
 		);
 		let results = [];
 		try {
 			const allData = await chosenStops.map(async (stop) => {
 				return await routing
 					.searchPlaces(
-						"restaurant",
-						"687",
+						state.keywordSearch,
+						state.distanceSearch,
 						stop.coordinates[1],
 						stop.coordinates[0]
 					)
 					.then((res) => {
+						console.log(res);
 						const results = res.data.results.filter(
 							(item) => Object.entries(item).length
 						);
@@ -61,6 +59,7 @@ const Screen = ({ userLocation }) => {
 					.catch((err) => console.log(err));
 			});
 			Promise.all(allData).then((values) => {
+				// console.log(values);
 				if (!values) {
 					return;
 				}
@@ -94,7 +93,13 @@ const Screen = ({ userLocation }) => {
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
-		search: () => <Search setSearchValues={setState} state={state} />
+		search: () => (
+			<Search
+				setSearchValues={setState}
+				state={state}
+				handleSearch={handleSearch}
+			/>
+		)
 	});
 
 	return (
