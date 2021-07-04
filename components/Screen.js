@@ -11,11 +11,11 @@ const Screen = ({ userLocation }) => {
 		{ key: "search", title: "Search", icon: "magnify" }
 	]);
 	const [state, setState] = useState({
-		center: userLocation || {
-			lat: 39.724888799404596,
-			lng: -104.99608392483549,
-			latitudeDelta: 0.04,
-			longitudeDelta: 0.05
+		center: {
+			latitude: 39.724888799404596,
+			longitude: -104.99608392483549,
+			latitudeDelta: 0.15,
+			longitudeDelta: 0.2
 		},
 		stops: [],
 		markers: [],
@@ -23,12 +23,21 @@ const Screen = ({ userLocation }) => {
 		destination: "",
 		lineChosen: "",
 		keywordSearch: "",
-		distanceSearch: ""
+		distanceSearch: "",
+		loading: false
 	});
 
 	useEffect(() => {
 		setState({ ...state, origin: "", destination: "" });
 	}, [state.lineChosen]);
+
+	const midpoint = ([x1, y1], [x2, y2]) => [(x1 + x2) / 2, (y1 + y2) / 2];
+	console.log(
+		midpoint(
+			[39.5800932828196, -105.025031567126],
+			[39.7465977851544, -104.990288311723]
+		)
+	);
 
 	const handleSearch = async () => {
 		const chosenStops = await routing.getStops(
@@ -36,7 +45,26 @@ const Screen = ({ userLocation }) => {
 			state.origin,
 			state.destination
 		);
+		const newCenter = midpoint(
+			[state.stops[0].coordinates[1], state.stops[0].coordinates[0]],
+			[
+				state.stops[state.stops.length - 1].coordinates[1],
+				state.stops[state.stops.length - 1].coordinates[0]
+			]
+		);
 		let results = [];
+		let zoomLevel = 100;
+		switch (state.lineChosen) {
+			case "a":
+				zoomLevel = 110;
+				break;
+			case "e" || "r" || "h":
+				zoomLevel = 50;
+				break;
+			default:
+				zoomLevel = 80;
+		}
+
 		try {
 			const allData = await chosenStops.map(async (stop) => {
 				return await routing
@@ -77,7 +105,24 @@ const Screen = ({ userLocation }) => {
 
 					results.push(...objects);
 				});
-				setState({ ...state, markers: results, stops: chosenStops });
+				console.log(
+					"new center: ",
+					newCenter,
+					typeof parseFloat((state.stops.length / zoomLevel).toFixed(2)),
+					typeof parseFloat((state.stops.length / zoomLevel).toFixed(2))
+				);
+				setState({
+					...state,
+					markers: results,
+					stops: chosenStops,
+					center: {
+						latitude: newCenter[0],
+						longitude: newCenter[1],
+						latitudeDelta: parseFloat((state.stops.length / 80).toFixed(2)),
+						longitudeDelta: parseFloat((state.stops.length / 80).toFixed(2))
+					}
+				});
+				setIndex(0);
 			});
 		} catch (err) {
 			console.log(err);
@@ -105,6 +150,7 @@ const Screen = ({ userLocation }) => {
 			navigationState={{ index, routes }}
 			onIndexChange={setIndex}
 			renderScene={renderScene}
+			handleSearch={handleSearch}
 		/>
 	);
 };

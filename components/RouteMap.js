@@ -8,10 +8,19 @@ export default function RouteMap({ region, markers }) {
 	// 	setRegion({ ...region, newRegion });
 	// };
 	return (
-		<MapView region={region} style={styles.map}>
-			{markers.map((mark) => (
+		<MapView
+			region={region}
+			showUserLocation={true}
+			style={styles.map}
+			initialRegion={{
+				latitude: 39.724888799404596,
+				longitude: -104.99608392483549,
+				latitudeDelta: 0.15,
+				longitudeDelta: 0.2
+			}}>
+			{markers.map((mark, i) => (
 				<Marker
-					key={Math.floor(Math.random() * 10000)}
+					key={i}
 					coordinate={{
 						latitude: mark.coordinates[1],
 						longitude: mark.coordinates[0]
