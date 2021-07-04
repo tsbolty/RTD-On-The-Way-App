@@ -1,6 +1,5 @@
 import axios from "axios";
 import lines from "./index";
-// import { REACT_APP_GOOGLE_API_KEY } from "@env";
 const getStops = async (line, origin, destination) => {
 	const allLineStops = lines[`${line}Line`];
 	const start = allLineStops.map((e) => e.name).indexOf(origin);
