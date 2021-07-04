@@ -4,9 +4,6 @@ import { StyleSheet, Dimensions } from "react-native";
 import { Marker } from "react-native-maps";
 
 export default function RouteMap({ region, markers }) {
-	// const onRegionChange = (newRegion) => {
-	// 	setRegion({ ...region, newRegion });
-	// };
 	return (
 		<MapView
 			region={region}
