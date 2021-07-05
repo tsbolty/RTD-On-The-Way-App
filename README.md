@@ -2,7 +2,7 @@
   # RTD On The Way
   [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tsbolty/rtd-on-the-way)
   
-  This site is published [here](https://expo.io/@tsbolty/native-rtd-otw)
+  This app is published [here](https://expo.io/@tsbolty/native-rtd-otw)
   
   ## Description
   This application allows a user to choose an RTD light rail line, starting station, destination station, keyword search value and the number of blocks their willing to walk. The user will then be redirected to the built in map to view all stops on their route as well as all search results that match their query for each station along the way.
