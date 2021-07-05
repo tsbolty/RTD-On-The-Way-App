@@ -4,7 +4,7 @@ import allLines from "../utils/allLines.json";
 import destinationTypes from "../utils/destinationTypes.json";
 import distances from "../utils/distances";
 import { Button, List } from "react-native-paper";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, Text } from "react-native";
 
 function Search({ state, setSearchValues, handleSearch }) {
 	const [expanded, setExpanded] = useState({
@@ -30,7 +30,7 @@ function Search({ state, setSearchValues, handleSearch }) {
 			  });
 	};
 
-	const handleResetSearch = (e) => {
+	const handleResetSearch = e => {
 		setSearchValues({
 			...state,
 			lineChosen: "",
@@ -65,19 +65,28 @@ function Search({ state, setSearchValues, handleSearch }) {
 			}}>
 			<View>
 				<List.Section style={{ marginTop: 50 }}>
-					<List.Subheader>Search along your route</List.Subheader>
+					<List.Subheader style={{ fontWeight: "bold", fontSize: 25 }}>
+						Search along your route
+					</List.Subheader>
 					<List.AccordionGroup style={styles.container}>
 						<List.Accordion
 							title='Choose a train line'
 							id='1'
 							expanded={expanded.line}
-							left={() => <List.Icon icon='train' />}>
+							left={() => <List.Icon icon='train' />}
+							right={() =>
+								state.lineChosen ? (
+									<Text>{state.lineChosen.toUpperCase()} Line</Text>
+								) : (
+									<List.Icon icon='menu-down' />
+								)
+							}>
 							<ScrollView style={styles.scrollView}>
-								{allLines.map((line) => (
+								{allLines.map(line => (
 									<List.Item
 										key={line}
 										title={line}
-										onPress={(e) => {
+										onPress={e => {
 											handlePress(
 												"stops",
 												routing.getLine(line.slice(0, 1).toLowerCase()),
@@ -93,102 +102,143 @@ function Search({ state, setSearchValues, handleSearch }) {
 								<List.Accordion
 									id='2'
 									style={styles.dropdownArea}
-									title='Beginning Station'
+									title='Starting Station'
 									expanded={expanded.origin}
 									onPress={() =>
 										setExpanded({ ...expanded, origin: !expanded.origin })
 									}
-									left={(props) => <List.Icon {...props} icon='train' />}>
+									left={props => <List.Icon {...props} icon='train' />}
+									right={() =>
+										state.origin ? (
+											<Text>{state.origin}</Text>
+										) : (
+											<List.Icon icon='menu-down' />
+										)
+									}>
 									<ScrollView style={styles.scrollView}>
-										{state.stops.map((station) => (
+										{state.stops.map(station => (
 											<List.Item
 												key={station.name}
 												title={station.name}
-												onPress={(e) => handlePress("origin", station.name)}
+												onPress={e => handlePress("origin", station.name)}
 											/>
 										))}
 									</ScrollView>
 								</List.Accordion>
-								<List.Accordion
-									title='Destination Station'
-									id='3'
-									expanded={expanded.destination}
-									onPress={() =>
-										setExpanded({
-											...expanded,
-											destination: !expanded.destination
-										})
-									}
-									left={(props) => <List.Icon {...props} icon='train' />}>
-									<ScrollView style={styles.scrollView}>
-										{state.stops.map((station) => (
-											<List.Item
-												key={station.name}
-												title={station.name}
-												onPress={(e) =>
-													handlePress("destination", station.name)
-												}
-											/>
-										))}
-									</ScrollView>
-								</List.Accordion>
-							</>
-						) : null}
-						{state.origin && state.destination ? (
-							<>
-								<List.Accordion
-									title='What you looking for?'
-									id='4'
-									expanded={expanded.businessType}
-									onPress={() =>
-										setExpanded({
-											...expanded,
-											businessType: !expanded.businessType
-										})
-									}
-									left={(props) => (
-										<List.Icon {...props} icon='google-my-business' />
-									)}>
-									<ScrollView style={styles.scrollView}>
-										{destinationTypes.map((type) => (
-											<List.Item
-												key={type}
-												title={type}
-												onPress={(e) => handlePress("keywordSearch", type)}
-											/>
-										))}
-									</ScrollView>
-								</List.Accordion>
-							</>
-						) : null}
-						{state.keywordSearch ? (
-							<>
-								<List.Accordion
-									title='How may blocks away?'
-									id='5'
-									expanded={expanded.distanceSearch}
-									onPress={() =>
-										setExpanded({
-											...expanded,
-											distanceSearch: !expanded.distanceSearch
-										})
-									}
-									left={(props) => <List.Icon {...props} icon='walk' />}>
-									<ScrollView style={styles.scrollView}>
-										{distances.map((distance) => (
-											<List.Item
-												key={distance}
-												title={distance}
-												onPress={(e) =>
-													handlePress(
-														"distanceSearch",
-														Math.floor(distance * 80.4672)
-													)
-												}
-											/>
-										))}
-									</ScrollView>
-								</List.Accordion>
+								{state.origin ? (
+									<>
+										<List.Accordion
+											title='Destination Station'
+											id='3'
+											expanded={expanded.destination}
+											onPress={() =>
+												setExpanded({
+													...expanded,
+													destination: !expanded.destination
+												})
+											}
+											left={props => <List.Icon {...props} icon='train' />}
+											right={() =>
+												state.destination ? (
+													<Text>{state.destination}</Text>
+												) : (
+													<List.Icon icon='menu-down' />
+												)
+											}>
+											<ScrollView style={styles.scrollView}>
+												{state.stops.map(station => (
+													<List.Item
+														key={station.name}
+														title={station.name}
+														onPress={e =>
+															handlePress("destination", station.name)
+														}
+													/>
+												))}
+											</ScrollView>
+										</List.Accordion>
+										{state.destination ? (
+											<>
+												<List.Accordion
+													title='What you looking for?'
+													id='4'
+													expanded={expanded.businessType}
+													onPress={() =>
+														setExpanded({
+															...expanded,
+															businessType: !expanded.businessType
+														})
+													}
+													left={props => (
+														<List.Icon {...props} icon='google-my-business' />
+													)}
+													right={() =>
+														state.keywordSearch ? (
+															<Text>{state.keywordSearch}</Text>
+														) : (
+															<List.Icon icon='menu-down' />
+														)
+													}>
+													<ScrollView style={styles.scrollView}>
+														{destinationTypes.map(type => (
+															<List.Item
+																key={type}
+																title={type.replace(/_+/g, " ")}
+																onPress={e =>
+																	handlePress("keywordSearch", type)
+																}
+															/>
+														))}
+													</ScrollView>
+												</List.Accordion>
+												{state.keywordSearch ? (
+													<>
+														<List.Accordion
+															title='How may blocks away?'
+															id='5'
+															expanded={expanded.distanceSearch}
+															onPress={() =>
+																setExpanded({
+																	...expanded,
+																	distanceSearch: !expanded.distanceSearch
+																})
+															}
+															left={props => (
+																<List.Icon {...props} icon='walk' />
+															)}
+															right={() =>
+																state.distanceSearch ? (
+																	<Text>
+																		{Math.ceil(state.distanceSearch / 80.4672)}{" "}
+																		Blocks
+																	</Text>
+																) : (
+																	<List.Icon icon='menu-down' />
+																)
+															}>
+															<ScrollView style={styles.scrollView}>
+																{distances.map(distance => (
+																	<List.Item
+																		key={distance}
+																		title={`${distance} block${
+																			distance > 1 ? "s" : null
+																		}`}
+																		onPress={e =>
+																			handlePress(
+																				"distanceSearch",
+																				Math.floor(distance * 80.4672)
+																			)
+																		}
+																	/>
+																))}
+															</ScrollView>
+														</List.Accordion>
+													</>
+												) : null}
+											</>
+										) : null}
+									</>
+								) : null}
 							</>
 						) : null}
 					</List.AccordionGroup>

@@ -1,6 +1,7 @@
 import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { List } from "react-native-paper";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { List, IconButton } from "react-native-paper";
+import * as Linking from "expo-linking";
 
 function Results({ searchResults, keyword, origin, destination, distance }) {
 	const blocks = Math.ceil(distance / 80.4672);
@@ -10,18 +11,35 @@ function Results({ searchResults, keyword, origin, destination, distance }) {
 				<>
 					<Text style={styles.searchDescription}>
 						You searched for {keyword} within {blocks} block
-						{blocks > 1 ? "s" : null} of each station between {origin} and
+						{blocks > 1 ? "s" : null} of each station between {origin} and{" "}
 						{destination}
 					</Text>
-					<Text style={{ fontWeight: "bold", fontSize: 30 }}>Results:</Text>
+					<Text style={styles.results}>Results:</Text>
 					<List.Section>
-						{searchResults.map((item) => (
-							<List.Item
-								key={item.name}
-								title={item.name}
-								description={`Address: ${item.address}`}
-							/>
-						))}
+						<ScrollView>
+							{searchResults.map((item, i) => (
+								<List.Item
+									key={i}
+									title={item.name}
+									description={`Address: ${item.address}`}
+									right={() => (
+										<IconButton
+											icon='google-maps'
+											color='blue'
+											onPress={() =>
+												Linking.openURL(
+													`https://www.google.com/maps/search/?api=1&query=${item.name
+														.replace(/\s+/g, "+")
+														.toLowerCase()}+${item.address
+														.replace(/\s+/g, "+")
+														.toLowerCase()}`
+												)
+											}
+										/>
+									)}
+								/>
+							))}
+						</ScrollView>
 					</List.Section>
 				</>
 			) : (
@@ -37,12 +55,15 @@ function Results({ searchResults, keyword, origin, destination, distance }) {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 50
+		marginTop: 50,
+		height: 500
 	},
 	searchDescription: {
+		padding: 30,
 		fontWeight: "bold",
 		fontSize: 18
-	}
+	},
+	results: { fontWeight: "bold", fontSize: 30 }
 });
 
 export default Results;

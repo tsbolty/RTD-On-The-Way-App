@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import MapView from "react-native-maps";
-import { StyleSheet, Dimensions } from "react-native";
+import * as Linking from "expo-linking";
+import { StyleSheet, Dimensions, View } from "react-native";
+import { Modal, Portal, Text, Button, Provider } from "react-native-paper";
 import { Marker } from "react-native-maps";
 
-export default function RouteMap({ region, markers }) {
+export default function RouteMap({ center, markers }) {
 	const [selectedMarker, setSelectedMarker] = useState({
 		name: "",
 		placeId: "",
@@ -11,18 +13,15 @@ export default function RouteMap({ region, markers }) {
 		address: ""
 	});
 
+	const [visible, setVisible] = React.useState(false);
+
+	const showModal = () => setVisible(true);
+	const hideModal = () => setVisible(false);
+	const containerStyle = { backgroundColor: "white", padding: 20 };
+
 	return (
-		<>
-			<MapView
-				region={region}
-				showUserLocation={true}
-				style={styles.map}
-				initialRegion={{
-					latitude: 39.724888799404596,
-					longitude: -104.99608392483549,
-					latitudeDelta: 0.15,
-					longitudeDelta: 0.2
-				}}>
+		<View>
+			<MapView region={center} showUserLocation={true} style={styles.map}>
 				{markers.map((mark, i) => (
 					<Marker
 						key={i}
@@ -32,11 +31,44 @@ export default function RouteMap({ region, markers }) {
 						}}
 						title={mark.name}
 						pinColor={mark.type === "result" ? "blue" : "red"}
-						onPress={(mark) => setSelectedMarker({ ...mark })}
+						onPress={() => {
+							setSelectedMarker(mark);
+							showModal();
+						}}
 					/>
 				))}
 			</MapView>
-		</>
+			<Provider>
+				<Portal>
+					<Modal
+						visible={visible}
+						onDismiss={hideModal}
+						contentContainerStyle={containerStyle}>
+						<Text style={styles.locationName}>{selectedMarker.name}</Text>
+						{selectedMarker.address ? (
+							<>
+								<Text>Closest station: {selectedMarker.closestStation}</Text>
+								<Text>Address: {selectedMarker.address}</Text>
+								<Button
+									onPress={() =>
+										Linking.openURL(
+											`https://www.google.com/maps/search/?api=1&query=${selectedMarker.name
+												.replace(/\s+/g, "+")
+												.toLowerCase()}+${selectedMarker.address
+												.replace(/\s+/g, "+")
+												.toLowerCase()}`
+										)
+									}>
+									Check it out on Google Maps
+								</Button>
+							</>
+						) : (
+							<Text>Sorry there's no address for this location.</Text>
+						)}
+					</Modal>
+				</Portal>
+			</Provider>
+		</View>
 	);
 }
 
@@ -50,5 +82,9 @@ const styles = StyleSheet.create({
 	map: {
 		width: Dimensions.get("window").width,
 		height: Dimensions.get("window").height
+	},
+	locationName: {
+		fontWeight: "bold",
+		fontSize: 30
 	}
 });

@@ -6,10 +6,10 @@ import { BottomNavigation } from "react-native-paper";
 import routing from "../utils/route";
 
 const Screen = ({ userLocation }) => {
-	const [index, setIndex] = React.useState(0);
+	const [index, setIndex] = React.useState(1);
 	const [routes] = React.useState([
-		{ key: "map", title: "Map", icon: "map" },
 		{ key: "search", title: "Search", icon: "magnify" },
+		{ key: "map", title: "Map", icon: "map" },
 		{ key: "results", title: "Results", icon: "view-list" }
 	]);
 	const [state, setState] = useState({
@@ -42,10 +42,10 @@ const Screen = ({ userLocation }) => {
 			state.destination
 		);
 		const newCenter = midpoint(
-			[state.stops[0].coordinates[1], state.stops[0].coordinates[0]],
+			[chosenStops[0].coordinates[1], chosenStops[0].coordinates[0]],
 			[
-				state.stops[state.stops.length - 1].coordinates[1],
-				state.stops[state.stops.length - 1].coordinates[0]
+				chosenStops[chosenStops.length - 1].coordinates[1],
+				chosenStops[chosenStops.length - 1].coordinates[0]
 			]
 		);
 		let results = [];
@@ -55,14 +55,14 @@ const Screen = ({ userLocation }) => {
 				zoomLevel = 40;
 				break;
 			case "e" || "r" || "h":
-				zoomLevel = 110;
+				zoomLevel = 90;
 				break;
 			default:
 				zoomLevel = 75;
 		}
 
 		try {
-			const allData = await chosenStops.map(async (stop) => {
+			const allData = await chosenStops.map(async stop => {
 				return await routing
 					.searchPlaces(
 						state.keywordSearch,
@@ -70,24 +70,24 @@ const Screen = ({ userLocation }) => {
 						stop.coordinates[1],
 						stop.coordinates[0]
 					)
-					.then((res) => {
+					.then(res => {
 						const results = res.data.results.filter(
-							(item) => Object.entries(item).length
+							item => Object.entries(item).length
 						);
-						return results.map((item) => ({
+						return results.map(item => ({
 							...item,
 							closestStation: stop.name
 						}));
 					})
-					.catch((err) => console.log(err));
+					.catch(err => console.log(err));
 			});
-			Promise.all(allData).then((values) => {
+			Promise.all(allData).then(values => {
 				if (!values) {
 					return;
 				}
-				values.forEach((value) => {
+				values.forEach((value, i) => {
 					const objects =
-						value.map((obj) => ({
+						value.map(obj => ({
 							name: obj.name,
 							placeId: obj.place_id,
 							coordinates: [
@@ -95,7 +95,7 @@ const Screen = ({ userLocation }) => {
 								obj.geometry.location.lat
 							],
 							address: obj.vicinity,
-
+							closestStation: chosenStops[i].name,
 							type: "result"
 						})) || [];
 
@@ -116,7 +116,7 @@ const Screen = ({ userLocation }) => {
 						)
 					}
 				});
-				setIndex(0);
+				setIndex(1);
 			});
 		} catch (err) {
 			console.log(err);
@@ -126,7 +126,7 @@ const Screen = ({ userLocation }) => {
 	const renderScene = BottomNavigation.SceneMap({
 		map: () => (
 			<RouteMap
-				region={state.center}
+				center={state.center}
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
