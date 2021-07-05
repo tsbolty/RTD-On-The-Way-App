@@ -183,7 +183,7 @@ function Search({ state, setSearchValues, handleSearch }) {
 														{destinationTypes.map(type => (
 															<List.Item
 																key={type}
-																title={type}
+																title={type.replace(/_+/g, " ")}
 																onPress={e =>
 																	handlePress("keywordSearch", type)
 																}
