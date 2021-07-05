@@ -6,8 +6,10 @@ import fLine from "./fLine.json";
 import gLine from "./gLine.json";
 import hLine from "./hLine.json";
 import iLine from "./iLine.json";
+import lLine from "./lLine.json";
 import nLine from "./nLine.json";
 import rLine from "./rLine.json";
+import wLine from "./wLine.json";
 
 export default {
 	aLine,
@@ -18,6 +20,8 @@ export default {
 	gLine,
 	hLine,
 	iLine,
+	lLine,
 	nLine,
-	rLine
+	rLine,
+	wLine
 };

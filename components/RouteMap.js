@@ -13,16 +13,7 @@ export default function RouteMap({ region, markers }) {
 
 	return (
 		<>
-			<MapView
-				region={region}
-				showUserLocation={true}
-				style={styles.map}
-				initialRegion={{
-					latitude: 39.724888799404596,
-					longitude: -104.99608392483549,
-					latitudeDelta: 0.15,
-					longitudeDelta: 0.2
-				}}>
+			<MapView region={region} showUserLocation={true} style={styles.map}>
 				{markers.map((mark, i) => (
 					<Marker
 						key={i}
@@ -32,7 +23,7 @@ export default function RouteMap({ region, markers }) {
 						}}
 						title={mark.name}
 						pinColor={mark.type === "result" ? "blue" : "red"}
-						onPress={(mark) => setSelectedMarker({ ...mark })}
+						onPress={(mark) => console.log(region)}
 					/>
 				))}
 			</MapView>

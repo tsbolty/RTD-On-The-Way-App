@@ -210,7 +210,8 @@ function Search({ state, setSearchValues, handleSearch }) {
 				<Button
 					icon='nuke'
 					mode='contained'
-					onPress={handleResetSearch}
+					// onPress={handleResetSearch}
+					onPress={() => console.log(state)}
 					style={styles.myButton}>
 					Reset Search Values
 				</Button>

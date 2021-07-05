@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 		marginTop: 50
 	},
 	searchDescription: {
+		padding: 30,
 		fontWeight: "bold",
 		fontSize: 18
 	}

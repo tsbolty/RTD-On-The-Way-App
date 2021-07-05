@@ -42,12 +42,21 @@ const Screen = ({ userLocation }) => {
 			state.destination
 		);
 		const newCenter = midpoint(
-			[state.stops[0].coordinates[1], state.stops[0].coordinates[0]],
+			[chosenStops[0].coordinates[1], chosenStops[0].coordinates[0]],
 			[
-				state.stops[state.stops.length - 1].coordinates[1],
-				state.stops[state.stops.length - 1].coordinates[0]
+				chosenStops[chosenStops.length - 1].coordinates[1],
+				chosenStops[chosenStops.length - 1].coordinates[0]
 			]
 		);
+		console.log("new center: ", newCenter);
+		console.log("beginning: ", {
+			beginning: state.stops[0].coordinates[1],
+			end: state.stops[0].coordinates[0]
+		});
+		console.log("end: ", {
+			beginning: state.stops[state.stops.length - 1].coordinates[1],
+			end: state.stops[state.stops.length - 1].coordinates[0]
+		});
 		let results = [];
 		let zoomLevel = 100;
 		switch (state.lineChosen) {
@@ -55,7 +64,7 @@ const Screen = ({ userLocation }) => {
 				zoomLevel = 40;
 				break;
 			case "e" || "r" || "h":
-				zoomLevel = 110;
+				zoomLevel = 90;
 				break;
 			default:
 				zoomLevel = 75;
