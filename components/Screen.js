@@ -6,10 +6,10 @@ import { BottomNavigation } from "react-native-paper";
 import routing from "../utils/route";
 
 const Screen = ({ userLocation }) => {
-	const [index, setIndex] = React.useState(0);
+	const [index, setIndex] = React.useState(1);
 	const [routes] = React.useState([
-		{ key: "map", title: "Map", icon: "map" },
 		{ key: "search", title: "Search", icon: "magnify" },
+		{ key: "map", title: "Map", icon: "map" },
 		{ key: "results", title: "Results", icon: "view-list" }
 	]);
 	const [state, setState] = useState({
@@ -48,15 +48,6 @@ const Screen = ({ userLocation }) => {
 				chosenStops[chosenStops.length - 1].coordinates[0]
 			]
 		);
-		console.log("new center: ", newCenter);
-		console.log("beginning: ", {
-			beginning: state.stops[0].coordinates[1],
-			end: state.stops[0].coordinates[0]
-		});
-		console.log("end: ", {
-			beginning: state.stops[state.stops.length - 1].coordinates[1],
-			end: state.stops[state.stops.length - 1].coordinates[0]
-		});
 		let results = [];
 		let zoomLevel = 100;
 		switch (state.lineChosen) {
@@ -71,7 +62,7 @@ const Screen = ({ userLocation }) => {
 		}
 
 		try {
-			const allData = await chosenStops.map(async (stop) => {
+			const allData = await chosenStops.map(async stop => {
 				return await routing
 					.searchPlaces(
 						state.keywordSearch,
@@ -79,24 +70,24 @@ const Screen = ({ userLocation }) => {
 						stop.coordinates[1],
 						stop.coordinates[0]
 					)
-					.then((res) => {
+					.then(res => {
 						const results = res.data.results.filter(
-							(item) => Object.entries(item).length
+							item => Object.entries(item).length
 						);
-						return results.map((item) => ({
+						return results.map(item => ({
 							...item,
 							closestStation: stop.name
 						}));
 					})
-					.catch((err) => console.log(err));
+					.catch(err => console.log(err));
 			});
-			Promise.all(allData).then((values) => {
+			Promise.all(allData).then(values => {
 				if (!values) {
 					return;
 				}
-				values.forEach((value) => {
+				values.forEach((value, i) => {
 					const objects =
-						value.map((obj) => ({
+						value.map(obj => ({
 							name: obj.name,
 							placeId: obj.place_id,
 							coordinates: [
@@ -104,7 +95,7 @@ const Screen = ({ userLocation }) => {
 								obj.geometry.location.lat
 							],
 							address: obj.vicinity,
-
+							closestStation: chosenStops[i].name,
 							type: "result"
 						})) || [];
 
@@ -125,7 +116,7 @@ const Screen = ({ userLocation }) => {
 						)
 					}
 				});
-				setIndex(0);
+				setIndex(1);
 			});
 		} catch (err) {
 			console.log(err);
@@ -135,7 +126,7 @@ const Screen = ({ userLocation }) => {
 	const renderScene = BottomNavigation.SceneMap({
 		map: () => (
 			<RouteMap
-				region={state.center}
+				center={state.center}
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
