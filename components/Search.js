@@ -221,7 +221,7 @@ function Search({ state, setSearchValues, handleSearch }) {
 																	<List.Item
 																		key={distance}
 																		title={`${distance} block${
-																			distance > 1 ? "s" : null
+																			distance > 1 ? "s" : ""
 																		}`}
 																		onPress={e =>
 																			handlePress(
