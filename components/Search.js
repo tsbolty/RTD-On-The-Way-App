@@ -3,10 +3,10 @@ import routing from "../utils/route";
 import allLines from "../utils/allLines.json";
 import destinationTypes from "../utils/destinationTypes.json";
 import distances from "../utils/distances";
-import { Button, List } from "react-native-paper";
+import { Button, List, Headline } from "react-native-paper";
 import { View, ScrollView, StyleSheet, Text } from "react-native";
 
-function Search({ state, setSearchValues, handleSearch }) {
+function Search({ state, setSearchValues, handleSearch, loading }) {
 	const [expanded, setExpanded] = useState({
 		lineChosen: false,
 		origin: false,
@@ -246,17 +246,25 @@ function Search({ state, setSearchValues, handleSearch }) {
 			</View>
 
 			<View style={{ bottom: 0 }}>
-				<Button
-					icon='map-search'
-					mode='contained'
-					disabled={buttonDisabled}
-					style={styles.myButton}
-					onPress={() => {
-						setButtonDisabled(true);
-						handleSearch();
-					}}>
-					Search
-				</Button>
+				{loading ? (
+					<Headline
+						style={{ width: "100%", textAlign: "center", ...styles.myButton }}>
+						Searching...
+					</Headline>
+				) : (
+					<Button
+						icon='map-search'
+						mode='contained'
+						disabled={buttonDisabled}
+						style={styles.myButton}
+						onPress={() => {
+							setButtonDisabled(true);
+							handleSearch();
+						}}>
+						{loading}
+						Search
+					</Button>
+				)}
 				<Button
 					icon='nuke'
 					mode='contained'

@@ -25,9 +25,10 @@ const Screen = ({ userLocation }) => {
 		destination: "",
 		lineChosen: "",
 		keywordSearch: "",
-		distanceSearch: "",
-		loading: false
+		distanceSearch: ""
 	});
+
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setState({ ...state, origin: "", destination: "" });
@@ -36,6 +37,7 @@ const Screen = ({ userLocation }) => {
 	const midpoint = ([x1, y1], [x2, y2]) => [(x1 + x2) / 2, (y1 + y2) / 2];
 
 	const handleSearch = async () => {
+		setLoading(true);
 		const chosenStops = await routing.getStops(
 			state.lineChosen,
 			state.origin,
@@ -51,7 +53,7 @@ const Screen = ({ userLocation }) => {
 		let results = [];
 		let zoomLevel = 100;
 		switch (state.lineChosen) {
-			case "a":
+			case "a" || "n":
 				zoomLevel = 40;
 				break;
 			case "e" || "r" || "h":
@@ -117,6 +119,7 @@ const Screen = ({ userLocation }) => {
 					}
 				});
 				setIndex(1);
+				setLoading(false);
 			});
 		} catch (err) {
 			console.log(err);
@@ -135,6 +138,7 @@ const Screen = ({ userLocation }) => {
 				setSearchValues={setState}
 				state={state}
 				handleSearch={handleSearch}
+				loading={loading}
 			/>
 		),
 		results: () => (

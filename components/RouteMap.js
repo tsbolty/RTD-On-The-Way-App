@@ -47,13 +47,14 @@ export default function RouteMap({ center, markers }) {
 						<Text style={styles.locationName}>{selectedMarker.name}</Text>
 						{selectedMarker.address ? (
 							<>
-								<Text>Closest station: {selectedMarker.closestStation}</Text>
 								<Text>Address: {selectedMarker.address}</Text>
+								<Text>Closest station: {selectedMarker.closestStation}</Text>
 								<Button
 									onPress={() =>
 										Linking.openURL(
 											`https://www.google.com/maps/search/?api=1&query=${selectedMarker.name
 												.replace(/\s+/g, "+")
+												.replace(/&+/g, "%26")
 												.toLowerCase()}+${selectedMarker.address
 												.replace(/\s+/g, "+")
 												.toLowerCase()}`

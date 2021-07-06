@@ -14,14 +14,14 @@ function Results({ searchResults, keyword, origin, destination, distance }) {
 						{blocks > 1 ? "s" : null} of each station between {origin} and{" "}
 						{destination}
 					</Text>
-					<Text style={styles.results}>Results:</Text>
+					<Text style={styles.results}>Search Results:</Text>
 					<List.Section>
 						<ScrollView>
 							{searchResults.map((item, i) => (
 								<List.Item
 									key={i}
 									title={item.name}
-									description={`Address: ${item.address}`}
+									description={`Closest station: ${item.closestStation}`}
 									right={() => (
 										<IconButton
 											icon='google-maps'
@@ -30,6 +30,7 @@ function Results({ searchResults, keyword, origin, destination, distance }) {
 												Linking.openURL(
 													`https://www.google.com/maps/search/?api=1&query=${item.name
 														.replace(/\s+/g, "+")
+														.replace(/&+/g, "%26")
 														.toLowerCase()}+${item.address
 														.replace(/\s+/g, "+")
 														.toLowerCase()}`
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		fontSize: 18
 	},
-	results: { fontWeight: "bold", fontSize: 30 }
+	results: { fontWeight: "bold", fontSize: 30, marginLeft: 15 }
 });
 
 export default Results;
