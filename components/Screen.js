@@ -5,7 +5,7 @@ import Results from "./Results";
 import { BottomNavigation } from "react-native-paper";
 import routing from "../utils/route";
 
-const Screen = ({ userLocation }) => {
+const Screen = () => {
 	const [index, setIndex] = React.useState(1);
 	const [routes] = React.useState([
 		{ key: "search", title: "Search", icon: "magnify" },
@@ -56,7 +56,7 @@ const Screen = ({ userLocation }) => {
 			case "a" || "n":
 				zoomLevel = 40;
 				break;
-			case "e" || "r" || "h":
+			case "e" || "r" || "h" || "l":
 				zoomLevel = 90;
 				break;
 			default:
