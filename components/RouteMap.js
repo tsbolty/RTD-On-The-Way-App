@@ -5,7 +5,7 @@ import { StyleSheet, Dimensions, View } from "react-native";
 import { Modal, Portal, Text, Button, Provider } from "react-native-paper";
 import { Marker } from "react-native-maps";
 
-export default function RouteMap({ center, markers, setCenter }) {
+export default function RouteMap({ center, markers }) {
 	const [selectedMarker, setSelectedMarker] = useState({
 		name: "",
 		placeId: "",
@@ -21,12 +21,7 @@ export default function RouteMap({ center, markers, setCenter }) {
 
 	return (
 		<View>
-			<MapView
-				region={center}
-				showUserLocation={true}
-				style={styles.map}
-				// onRegionChange={region => setCenter({ region })}
-			>
+			<MapView region={center} showUserLocation={true} style={styles.map}>
 				{markers.map((mark, i) => (
 					<Marker
 						key={i}

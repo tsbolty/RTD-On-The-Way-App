@@ -129,7 +129,6 @@ const Screen = () => {
 		map: () => (
 			<RouteMap
 				center={state.center}
-				setCenter={region => setState({ ...state, center: { region } })}
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
