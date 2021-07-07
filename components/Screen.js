@@ -73,13 +73,12 @@ const Screen = () => {
 						stop.coordinates[0]
 					)
 					.then(res => {
-						const results = res.data.results.filter(
-							item => Object.entries(item).length
-						);
-						return results.map(item => ({
-							...item,
-							closestStation: stop.name
-						}));
+						return res.data.results
+							.filter(item => Object.keys(item).length)
+							.map(item => ({
+								...item,
+								closestStation: stop.name
+							}));
 					})
 					.catch(err => console.log(err));
 			});
@@ -88,7 +87,7 @@ const Screen = () => {
 					return;
 				}
 				values.forEach((value, i) => {
-					const objects =
+					const structuredData =
 						value.map(obj => ({
 							name: obj.name,
 							placeId: obj.place_id,
@@ -101,7 +100,7 @@ const Screen = () => {
 							type: "result"
 						})) || [];
 
-					results.push(...objects);
+					results.push(...structuredData);
 				});
 				setState({
 					...state,
@@ -130,6 +129,7 @@ const Screen = () => {
 		map: () => (
 			<RouteMap
 				center={state.center}
+				setCenter={region => setState({ ...state, center: { region } })}
 				markers={[...state.markers, ...state.stops]}
 			/>
 		),
