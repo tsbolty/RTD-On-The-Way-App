@@ -13,7 +13,9 @@ export default function RouteMap({ center, markers }) {
 		address: ""
 	});
 
-	const [visible, setVisible] = React.useState(false);
+	const [newRegion, setNewRegion] = useState({});
+
+	const [visible, setVisible] = useState(false);
 
 	const showModal = () => setVisible(true);
 	const hideModal = () => setVisible(false);
@@ -21,7 +23,11 @@ export default function RouteMap({ center, markers }) {
 
 	return (
 		<View>
-			<MapView region={center} showUserLocation={true} style={styles.map}>
+			<MapView
+				region={Object.keys(newRegion).length ? newRegion : center}
+				onRegionChange={region => setNewRegion({ region })}
+				showUserLocation={true}
+				style={styles.map}>
 				{markers.map((mark, i) => (
 					<Marker
 						key={i}
